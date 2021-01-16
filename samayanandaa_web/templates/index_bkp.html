@@ -1,0 +1,736 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SAMAYANANDAA</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--css-->
+		<script src="https://js.stripe.com/v3/"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'samayanandaa_web/assets/css/main.css' %}">
+		<link rel="stylesheet" href="{% static 'samayanandaa_web/assets/css/stripe.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'samayanandaa_web/assets/css/jquery-ui.min.css' %}">
+		<noscript><link rel="stylesheet" href="{% static 'samayanandaa_web/assets/css/noscript.css' %}" /></noscript>
+    <style>
+		html, body {
+		  margin: 0;
+		  padding: 0;
+		  font-family: Helvetica, Arial, sans-serif;
+		}
+		img {
+    		max-width: 100%;
+    		max-height: 100%;
+		}
+		* { box-sizing: border-box; }
+		.container {
+		  width: 100%;
+		  height: 450px;
+		  overflow: hidden;
+		  position: absolute;
+		}
+		.timer {
+		  height: 1%;
+		  width: 0%;
+		  position: absolute;
+		  left: 0;
+		  bottom: 0;
+		  z-index: 10;
+		}
+		.slideshow {
+		  position: relative;
+		  height: 100%;
+		}
+		.slide {
+		  width: 100%;
+		  height: 100%;
+		  text-align: center;
+		  line-height: 320px;
+		  font-size: 640px;
+		  }
+
+		.slide { display: none;}
+	    #date_of_birth_div {
+    	    display: none;
+    	}
+		.ui-datepicker {
+			width: 19em; 
+		}    	
+    </style>
+	</head>
+	<body class="is-preload">		
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<div class="container">
+					  		<div class="timer"></div>
+					  		<div class="slideshow">
+							    <div class="slide">
+							        <img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_01.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+									<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_02.jpg' %}" alt="">		
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_03.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_04.jpg' %}" alt="">
+							    </div> 
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_05.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_07.jpg' %}" alt="">
+							    </div>  							     	
+								<div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_08.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_09.jpg' %}" alt="">
+							    </div>  							     								    
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_10.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_11.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_12.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_13.jpg' %}" alt="">
+							    </div>  							     								    
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_14.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_15.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_16.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_17.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							        <img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_01.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+									<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_18.jpg' %}" alt="">		
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_19.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_20.jpg' %}" alt="">
+							    </div> 
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_21.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_22.jpg' %}" alt="">
+							    </div>  							     	
+								<div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_23.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_24.jpg' %}" alt="">
+							    </div>  							     								    
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_25.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_26.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_27.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_28.jpg' %}" alt="">
+							    </div>  							     								    
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_29.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_30.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_31.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_32.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_33.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_34.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_35.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_36.jpg' %}" alt="">
+							    </div>  							     								    
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_37.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_38.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_39.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_40.jpg' %}" alt="">
+							    </div>	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_41.jpg' %}" alt="">
+							    </div>							    						    
+							</div>						
+						</div>							
+						<div class="content">
+							<div class="inner">
+								<h1>Samayanandaa</h1>
+								<p>-- Service to Mankind --</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#about_us">About Us</a></li>
+								<li><a href="#natal_horoscope">Natal Horoscope</a></li>
+								<li><a href="#horary">Horary</a></li>
+								<li><a href="#annual_horoscopy">Annual Horoscopy</a></li>
+								<li><a href="#muhurat">Muhurat</a></li>
+								<li><a href="#remedies">Remedies</a></li>
+								<li><a href="#matrimonial_horoscope_matching">Matrimonial Horoscope Matching</a></li>
+								<li><a href="#contact_us">Contact Us</a></li>
+								<li><a href="#feedback">Feedback</a></li>
+							</ul>
+						</nav>						
+					</header>	
+					<!-- Main -->
+					<div id="main">
+						<!-- About Us -->
+							<article id="about_us">
+								<h2 class="major">About Us</h2>
+								<span class="image main">
+									<!--image-->
+									{% load staticfiles %}
+									<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}" alt="">
+								</span>
+								<p>Samayanandaa.org was started  to cater to the needs of various people coming from various segments of the society with an intention to give the BEST ASTROLOGICAL GUIDANCE ... keeping the present trend of the society having various needs of guidance in the areas of Knowing the Longevity, Health, Profession, Matrimonial Matters, Financial issues, Business, Legal matters concerning various issues, 
+									Some major Hurdles in life in reaching the goals etc... being some among various others personal issues...
+									It is the place where as one-stop ... anyone can avail the best guidance & remedial avenues.
+									The subject site was promoted by an EMINENT STELLAR ASTROLOGER, who practices KRISHNA MURTHY PADHATI for over 40 years. The various remedies for overcoming the various difficult situations by anyone, based on ones’s Horoscope, will be advised.
+									Mr. GVK RAO, is a STELLAR ASTROLOGER practising the Scientific stellar system known as KRISHNA MURTHY PADHATI, for over 44 years.... Mr. GVK RAO has participated in many National and International summits and presented various papers including the case studies...and many predictions to various individuals having been proved correct, to His credit...
+									Mr. RAO, hails from a Educated and Vedic Brahmin Family, and is a Post Graduate with Post Banking Qualifications and having served in Banking Sector for more than two and half decades, had devoted all His time for the welfare of the society.. His ancestors from His father’s’ side are Great Astrologers and from His Mothers’ side are Great SRIVIDYA UPASAKAS...
+									These two features have been genetically acquired by Mr Rao and He is both, an Astrologer and a SRIVIDYA UPASAKA...
+									He had been relentlessly, without any motives of only monetary gain, had been serving the various needs of the people to give relief from their suffering pain and to their utmost satisfaction....
+									Mr.Rao have had many astounding predictions to His credit and also by indicating various simple remedies, had turned the tables of many.
+									Mr. Rao being a SRIVIDYA UPASAKA, had undertaken the practice of SRI UCHISHTA GANAPATHY, DASA MAHAVIDYAS, SRI LALITHA, SRI RAJASHYAMALA, SRI VARAHI, CHANDI & RUDRA. 
+									Mr. RAO, had been fairly successful in indicating some colours which will enhance the positivity for His clients, and remove the hurdles of the clients based on the Horoscopes...
+									It was Mr.RAO, who based on His experience of more than FOUR DECADES, had come out with few remedies for various problems of which PUNARPHOO is main... which can avert the sudden cancellation of various important events starting from Admissions into schools/ colleges ..to even performance of Marriages and some situations leading to divorces.</p>								
+							</article>
+
+						<!-- Natal Horoscope -->
+							<article id="natal_horoscope">
+								<h2 class="major">Natal Horoscope</h2>
+								<span class="image main">
+									<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}">
+								</span>
+								<p>DATE, TIME & PLACE OF BIRTH to be given. If the Birth Place is a remote place, then any prominent place nearer to it within 20-25 km can be given with a note.</p>
+								<p>The Date, Time and Place of Marriage, if married, helps us in checking the correctness of the Birth Time... in case of any error, the Birth Time will be rectified.</p>
+								<form id="natal_horoscope_form" method="post" action="{% url 'home' %}#payment">
+									{% csrf_token %}
+									<div class="fields">
+										<div class="field half">
+											<label for="first_name">First Name</label>
+											<input type="text" name="first_name" id="first_name" value="{{ first_name }}"/>
+											<span class="helptext">Enter first name.</span>
+										</div>
+										<div class="field half">
+											<label for="middle_name">Middle Name</label>
+											<input type="text" name="middle_name" id="middle_name" value="{{middle_name}}"/>
+										</div>										
+										<div class="field half">
+											<label for="last_name">Last Name</label>
+											<input type="text" name="last_name" id="last_name" value="{{last_name}}"/>
+											<span class="helptext">Enter last name.</span>
+										</div>										
+										<div class="field half">
+											<label for="date_of_birth">Date of Birth</label>
+											<input type="text" name="date_of_birth" id="date_of_birth" value="{{date_of_birth}}" />
+											<span class="helptext">Enter date of birth between now and 100 years ago.</span>
+											<div id="date_of_birth_div">
+											</div>
+										</div>
+										<div class="field half">
+											<label for="time_of_birth">Time of Birth</label>
+											<select id="time_of_birth_hh" name="time_of_birth_hh" value="{{time_of_birth_hh}}">
+											  <option value="00">00</option>
+											  <option value="01">01</option>
+											  <option value="02">02</option>
+											  <option value="03">03</option>
+											  <option value="04">04</option>
+											  <option value="05">05</option>
+											  <option value="06">06</option>
+											  <option value="07">07</option>
+											  <option value="08">08</option>
+											  <option value="09">09</option>
+											  <option value="10">10</option>
+											  <option value="11">11</option>
+											  <option value="12">12</option>
+											</select>
+											<select id="time_of_birth_mm" name="time_of_birth_mm" value="{{time_of_birth_mm}}">
+											  <option value="00">00</option>
+											  <option value="01">01</option>
+											  <option value="02">02</option>
+											  <option value="03">03</option>
+											  <option value="04">04</option>
+											  <option value="05">05</option>
+											  <option value="06">06</option>
+											  <option value="07">07</option>
+											  <option value="08">08</option>
+											  <option value="09">09</option>
+											  <option value="10">10</option>
+											  <option value="11">11</option>
+											  <option value="12">12</option>
+											  <option value="13">13</option>
+											  <option value="14">14</option>
+											  <option value="15">15</option>
+											  <option value="16">16</option>
+											  <option value="17">17</option>
+											  <option value="18">18</option>
+											  <option value="19">19</option>
+											  <option value="20">20</option>
+											  <option value="21">21</option>
+											  <option value="22">22</option>
+											  <option value="23">23</option>
+											  <option value="24">24</option>
+											  <option value="25">25</option>
+											  <option value="26">26</option>
+											  <option value="27">27</option>
+											  <option value="28">28</option>
+											  <option value="29">29</option>
+											  <option value="30">30</option>
+											  <option value="31">31</option>
+											  <option value="32">32</option>
+											  <option value="33">33</option>
+											  <option value="34">34</option>
+											  <option value="35">35</option>
+											  <option value="36">36</option>
+											  <option value="37">37</option>
+											  <option value="38">38</option>
+											  <option value="39">39</option>
+											  <option value="40">40</option>
+											  <option value="41">41</option>
+											  <option value="42">42</option>
+											  <option value="43">43</option>
+											  <option value="44">44</option>
+											  <option value="45">45</option>
+											  <option value="46">46</option>
+											  <option value="47">47</option>
+											  <option value="48">48</option>
+											  <option value="49">49</option>
+											  <option value="50">50</option>
+											  <option value="51">51</option>
+											  <option value="52">52</option>
+											  <option value="53">53</option>
+											  <option value="54">54</option>
+											  <option value="55">55</option>
+											  <option value="56">56</option>
+											  <option value="57">57</option>
+											  <option value="58">58</option>
+											  <option value="59">59</option>										
+											</select>
+											<select id="time_of_birth_ss" name="time_of_birth_ss" value="{{time_of_birth_ss}}">
+											  <option value="00">00</option>
+											  <option value="01">01</option>
+											  <option value="02">02</option>
+											  <option value="03">03</option>
+											  <option value="04">04</option>
+											  <option value="05">05</option>
+											  <option value="06">06</option>
+											  <option value="07">07</option>
+											  <option value="08">08</option>
+											  <option value="09">09</option>
+											  <option value="10">10</option>
+											  <option value="11">11</option>
+											  <option value="12">12</option>
+											  <option value="13">13</option>
+											  <option value="14">14</option>
+											  <option value="15">15</option>
+											  <option value="16">16</option>
+											  <option value="17">17</option>
+											  <option value="18">18</option>
+											  <option value="19">19</option>
+											  <option value="20">20</option>
+											  <option value="21">21</option>
+											  <option value="22">22</option>
+											  <option value="23">23</option>
+											  <option value="24">24</option>
+											  <option value="25">25</option>
+											  <option value="26">26</option>
+											  <option value="27">27</option>
+											  <option value="28">28</option>
+											  <option value="29">29</option>
+											  <option value="30">30</option>
+											  <option value="31">31</option>
+											  <option value="32">32</option>
+											  <option value="33">33</option>
+											  <option value="34">34</option>
+											  <option value="35">35</option>
+											  <option value="36">36</option>
+											  <option value="37">37</option>
+											  <option value="38">38</option>
+											  <option value="39">39</option>
+											  <option value="40">40</option>
+											  <option value="41">41</option>
+											  <option value="42">42</option>
+											  <option value="43">43</option>
+											  <option value="44">44</option>
+											  <option value="45">45</option>
+											  <option value="46">46</option>
+											  <option value="47">47</option>
+											  <option value="48">48</option>
+											  <option value="49">49</option>
+											  <option value="50">50</option>
+											  <option value="51">51</option>
+											  <option value="52">52</option>
+											  <option value="53">53</option>
+											  <option value="54">54</option>
+											  <option value="55">55</option>
+											  <option value="56">56</option>
+											  <option value="57">57</option>
+											  <option value="58">58</option>
+											  <option value="59">59</option>										
+											</select>
+											<select id="ampm" name="ampm" value="{{am_pm}}">
+											  <option value="AM">AM</option>
+											  <option value="PM">PM</option>										
+											</select>
+										</div>	
+										<div class="field half">
+											<label for="place_of_birth">Place of Birth</label>
+											<input type="text" name="place_of_birth" id="place_of_birth" value="{{place_of_birth}}" />
+											<span class="helptext">Enter place of birth.</span>
+										</div>	
+										<div class="field half">
+											<label for="current_location">Current Location</label>
+											<input type="text" name="current_location" id="current_location" value="{{current_location}}"/>
+											<span class="helptext">Enter current location.</span>
+										</div>	
+										<div class="field half">
+											<label for="email_addr">Email</label>
+											<input type="text" name="email_addr" id="email_addr" value="{{email_addr}}"/>
+											<span class="helptext">Enter email address.</span>
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="4" value="{{message}}"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Submit Personal Info" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</form>
+							</article>
+
+						<!-- Payment -->
+							<article id="payment">
+								<h2 class="major">Payment</h2>
+								<span class="image main">
+									<img src="{% static 'samayanandaa_web/images/pic02.jpg' %}" alt="">
+								</span>
+								<p>Please make payment below.</p>
+								<form id="payment-form" method="post" action="{% url 'payment' %}#natal_horoscope_confirm">
+									{% csrf_token %}
+									<input style="max-width:60%;" readonly type="text" name="charge_id" id="charge_id" value="{{charge_id}}"><br>									
+									<input style="max-width:60%;" readonly type="hidden" name="client_id" id="client_id" value="{{client_id}}"><br>
+									<input style="max-width:60%;" readonly type="hidden" name="paid_status" id="paid_status" value="{{paid_status}}"><br>
+									<label for="receipt_email">Receipt E-mail</label>
+									<input style="max-width:60%;" type="text" name="receipt_email" id="receipt_email" value="{{receipt_email}}"><br>
+									<label for="amount">Amount</label>
+									<input style="max-width:60%;" readonly type="text" name="amount" id="amount" value="{{amount}}"><br>
+									<div class="form-row">
+										<!-- Used to display form errors. -->
+									</div>									  									  
+									<div class="form-row">									  	
+									    <div id="order-div">
+											<label for="card-element">
+											    Credit or debit card
+										    </label>
+										    <div id="card-element">
+										    	<!-- A Stripe Element will be inserted here. -->
+										    </div>
+										    <!-- Used to display form errors. -->
+										    <div id="card-errors" role="alert"></div>
+										    <br>
+									  		<button>Submit Payment</button>	
+									  	</div>
+									</div>
+								</form>
+							</article>
+
+						<!-- Natal Horoscope Confirm -->
+							<article id="natal_horoscope_confirm">
+								<h2 class="major">Natal Horoscope Payment</h2>
+								<span class="image main">
+									<img src="{% static 'samayanandaa_web/images/pic02.jpg' %}" alt="">
+									<!--<img src="images/pic02.jpg" alt="" />-->
+								</span>
+								<form id="natal_horoscope_confirm_form" method="post" action="">
+									{% csrf_token %}
+									<p>
+										Your information was sent to Guruji and he will review and revert back with you via email to the address provided:
+										<br> 
+										{{email_id}}
+										<br>
+										Your payment id is: {{charge_id}}
+									</p>
+								</form>
+							</article>
+
+						<!-- Horary -->
+							<article id="horary">
+								<h2 class="major">Horary</h2>
+								<span class="image main">
+									<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}" alt="">
+								</span>
+								<p>	Some people do not have any of the birth details and in such a case the consultee can confidently rely on this method wherein, He will be asked to put his Question and
+									also mention a Number between 1 & 249. Based on the number the HORARY HOROSCOPE will be erected and the answer will be given... It is to be noted that the consultees will have to give separate number for each query.
+								</p>
+							</article>
+						<!-- Annual Horoscopy -->
+							<article id="annual_horoscopy">
+								<h2 class="major">Annual Horoscopy</h2>
+								<span class="image main">
+									<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}" alt="">
+								</span>
+								<p>This is the system applicable for those who already have HOROSCOPE from us ... because it is a yearly exercise and we have to draw the horoscope for a particular year and has to be judged vis-a-vis the NATAL HOROSCOPE, based on the current data of the consultee viz.. His current place of stay etc.. The Annual Horoscopy throws much more illuminated light and it has to be judged again in combination with the NATAL HOROSCOPE.</p>
+							</article>							
+						<!-- Muhurat -->
+							<article id="muhurat">
+								<h2 class="major">Muhurat</h2>
+								<span class="image main">
+									<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}" alt="">
+								</span>
+								<p>	This the system of finding and fixing AUSPICIOUS TIME for performing various important activities such as
+									First Feeding of Child, 
+									Tonsuring ceremony,
+									Cradle ceremony,
+									Laying Foundation Stone,
+									Signing the Nominations,
+									Signing various imp. Papers, 
+									Thread Ceremonies,
+									Fixing of Alliances,
+									Marriage,
+									Joining Jobs,
+									Entering into Contracts,
+									Purchase/Sale of Land,
+									Sowing Seeds,
+									Opening of Offices,
+									Construction of Houses,
+									House Warming,
+									Starting of Compromises,
+									Purchase of Vehicles,
+									Taking of Medicines by sick persons, 
+									Hospitalisation, 
+									Ear Boaring Ceremonies,
+									Starting New Ventures, 
+									Digging of Borewells, 
+									Etc....
+									Selectively only few are given above, among various others.
+								</p>
+							</article>	
+						<!-- Remedies -->
+							<article id="remedies">
+								<h2 class="major">Remedies</h2>
+								<span class="image main">
+									<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}" alt="">
+								</span>
+								<p>
+									Generally it is seen that every person encounters some or the other problem during one’s life time starting from Health to Hispitalisation on the one hand and on the other hand some issues like settlement of debts, litigation, non- materialisation of marriages of children, continuous failures in one’s attempts be it in the Education, Jobs, fixation of Alliances for marriages, Love matters, construction of houses or house warming... etc being few given here selectively among various others.
+									At times the consultees will be advised whereupon they have to wear a particular colour code of dress to be used on certain week days where the problems can be overcome with much ease while in certain other issues they may be advised to resort to a particular remedy wherein certain types of God’s/ Mantra may have to be propitiated, viz. BAGALAMUKHI for Legal Litigation, UCHISHTA GANAPATHI for overcoming certain hurdles, DAKSHINAMOORTHY for some other issues ranging from kids Education to Heavy Disastrous Health Situations, CHANDI for Heavy Business Losses and slackness etc...
+									In this Remedial aspect.. Also advised various SHANTIS, if any, on the Birth of New Borns based on their Horoscopes. 
+									In case where the consultees suffer from PUNARPHOO, they experience failures in first attempts in Visa Approvals, Jobs, interview selections, Matrimonial Matters, Business Dealings etc.. (selectively given a few among others )
+									In some cases very simple remedies which are cost-free at times, mitigate the Malefic effects and enhance the positivity. While in some others, to follow some other remedies are suggested..
+									In selective cases, GEMS are advised to be put on the fingers..
+									THIS IS ADVISED ONLY & ONLY WHEN IT BECOMES MANDATORY.</p>
+							</article>		
+						<!-- Remedies -->
+							<article id="matrimonial_horoscope_matching">
+								<h2 class="major">Matrimonial Horoscope Matching</h2>
+								<span class="image main">
+									<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}" alt="">
+								</span>
+								<p>
+								</p>
+							</article>								
+						<!-- Contact -->
+							<article id="contact_us">
+								<h2 class="major">Contact Us</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="4"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</form>
+							</article>
+						<!-- Feedback -->
+							<article id="feedback">
+								<h2 class="major">Feedback</h2>
+								<span class="image main">
+									<img src="{% static 'samayanandaa_web/images/pic03.jpg' %}" alt="">
+								</span>
+								<p>
+									Feedback list here
+								</p>
+							</article>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy;Samayanandaa</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			{% load staticfiles %}
+			<script src="{% static 'samayanandaa_web/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'samayanandaa_web/assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'samayanandaa_web/assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'samayanandaa_web/assets/js/util.js' %}"></script>
+			<script src="{% static 'samayanandaa_web/assets/js/main.js' %}"></script>
+			<script src="{% static 'samayanandaa_web/assets/js/stripe.js' %}"></script>
+			<script src="{% static 'samayanandaa_web/assets/js/jquery-ui.min.js' %}"></script>
+			<script>
+			/* Slider (work in progress)
+			 * 03/09/2015 by Andrew Errico
+			 */
+			$(function() {
+
+			    // slider type
+			    $t = "fade"; // opitions are fade and slide
+			    
+			  	//variables
+			    $f = 1000,  // fade in/out speed
+			    $s = 1000,  // slide transition speed (for sliding carousel)
+			    $d = 3900;  // duration per slide
+			    
+			    $n = $('.slide').length; //number of slides
+			    $w = $('.slide').width(); // slide width
+			  	$c = $('.container').width(); // container width
+			   	$ss = $n * $w; // slideshow width
+			  
+			  	
+			      function timer() {
+			        $('.timer').animate({"width":$w}, $d);
+			        $('.timer').animate({"width":0}, 0);
+			    }
+
+			  
+			  // fading function
+			    function fadeInOut() {
+			      timer();
+			        $i = 0;    
+			        var setCSS = {
+			            'position' : 'absolute',
+			            'top' : '0',
+			            'left' : '0'
+			        }        
+			        
+			        $('.slide').css(setCSS);
+			        
+			        //show first item
+			        $('.slide').eq($i).show();
+			        
+
+			        setInterval(function() {
+			          timer();
+			            $('.slide').eq($i).fadeOut($f);
+			            if ($i == $n - 1) {
+			                $i = 0;
+			            } else {
+			                $i++;
+			            }
+			            $('.slide').eq($i).fadeIn($f, function() {
+			                $('.timer').css({'width' : '0'});
+			            });
+
+			        }, $d);
+			        
+			    }
+			    
+			    function slide() {
+			      timer();
+			        var setSlideCSS = {
+			            'float' : 'left',
+			            'display' : 'inline-block',
+			          	'width' : $c
+			        }
+			        var setSlideShowCSS = {
+			            'width' : $ss // set width of slideshow container
+			        }
+			        $('.slide').css(setSlideCSS);
+			        $('.slideshow').css(setSlideShowCSS); 
+			        
+			        
+			        setInterval(function() {
+			            timer();
+			            $('.slideshow').animate({"left": -$w}, $s, function(){
+			                // to create infinite loop
+			                $('.slideshow').css('left',0).append( $('.slide:first'));
+			            });
+			        }, $d);
+			        
+			    }
+			    
+			    if ($t == "fade") {
+			        fadeInOut();
+			        
+			    } if ($t == "slide") {
+			        slide();
+			        
+			    } else {
+			      
+			    }
+			});
+			$( function() {
+			    $( "#date_of_birth_div" ).datepicker({
+			        changeMonth: true,
+			        changeYear: true,
+			        yearRange: "1919:2019",
+			        onSelect: function(dateText, inst){
+			        	var date = $(this).val();
+			        	$("#date_of_birth").val(date);
+			        	$("#date_of_birth_div").hide();
+			        }			        
+			    });
+			});
+		    $("#date_of_birth").focusin(function() { 
+            	$("#date_of_birth_div").show();
+        	});         			
+			</script>
+	</body>
+</html>

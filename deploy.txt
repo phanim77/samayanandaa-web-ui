@@ -1,0 +1,2 @@
+Keypair name: samayanandaa-keypair
+passphrase: Hightime

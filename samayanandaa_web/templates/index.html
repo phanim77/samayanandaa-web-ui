@@ -1,0 +1,473 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block about_us_content %}
+<article id="about_us">
+	<h2 class="major">About Us</h2>
+	<span class="image main">
+		<!--image-->
+		{% load staticfiles %}
+		<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}" alt="">
+	</span>
+	<p>Samayanandaa.org was started  to cater to the needs of various people coming from various segments of the society with an intention to give the BEST ASTROLOGICAL GUIDANCE ... keeping the present trend of the society having various needs of guidance in the areas of Knowing the Longevity, Health, Profession, Matrimonial Matters, Financial issues, Business, Legal matters concerning various issues,
+		Some major Hurdles in life in reaching the goals etc... being some among various others personal issues...
+		It is the place where as one-stop ... anyone can avail the best guidance & remedial avenues.
+		The subject site was promoted by an EMINENT STELLAR ASTROLOGER, who practices KRISHNA MURTHY PADHATI for over 40 years. The various remedies for overcoming the various difficult situations by anyone, based on ones’s Horoscope, will be advised.
+		Mr. GVK RAO, is a STELLAR ASTROLOGER practising the Scientific stellar system known as KRISHNA MURTHY PADHATI, for over 44 years.... Mr. GVK RAO has participated in many National and International summits and presented various papers including the case studies...and many predictions to various individuals having been proved correct, to His credit...
+		Mr. RAO, hails from a Educated and Vedic Brahmin Family, and is a Post Graduate with Post Banking Qualifications and having served in Banking Sector for more than two and half decades, had devoted all His time for the welfare of the society.. His ancestors from His father’s’ side are Great Astrologers and from His Mothers’ side are Great SRIVIDYA UPASAKAS...
+		These two features have been genetically acquired by Mr Rao and He is both, an Astrologer and a SRIVIDYA UPASAKA...
+		He had been relentlessly, without any motives of only monetary gain, had been serving the various needs of the people to give relief from their suffering pain and to their utmost satisfaction....
+		Mr.Rao have had many astounding predictions to His credit and also by indicating various simple remedies, had turned the tables of many.
+		Mr. Rao being a SRIVIDYA UPASAKA, had undertaken the practice of SRI UCHISHTA GANAPATHY, DASA MAHAVIDYAS, SRI LALITHA, SRI RAJASHYAMALA, SRI VARAHI, CHANDI & RUDRA.
+		Mr. RAO, had been fairly successful in indicating some colours which will enhance the positivity for His clients, and remove the hurdles of the clients based on the Horoscopes...
+		It was Mr.RAO, who based on His experience of more than FOUR DECADES, had come out with few remedies for various problems of which PUNARPHOO is main... which can avert the sudden cancellation of various important events starting from Admissions into schools/ colleges ..to even performance of Marriages and some situations leading to divorces.</p>
+</article>
+{% endblock %}
+{% block natal_horoscope_content %}
+<!-- Natal Horoscope -->
+<article id="natal_horoscope">
+	<h2 class="major">Natal Horoscope</h2>
+	<span class="image main">
+		<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}">
+	</span>
+	<p>DATE, TIME & PLACE OF BIRTH to be given. If the Birth Place is a remote place, then any prominent place nearer to it within 20-25 km can be given with a note.</p>
+	<p>The Date, Time and Place of Marriage, if married, helps us in checking the correctness of the Birth Time... in case of any error, the Birth Time will be rectified.</p>
+	<form id="natal_horoscope_form" method="post" action="{% url 'home' %}#natal_horoscope">
+		{% csrf_token %}
+		<div class="fields">
+			<div class="field half">
+				{% if first_name_missing == "true" %}
+				<span class="alert">Enter first name.</span>
+				{% endif %}
+				<label for="first_name">First Name</label>
+				<input type="text" name="first_name" id="first_name" value="{{ first_name }}" maxlength="30"/>
+			</div>
+			<div class="field half">
+				<label for="middle_name">Middle Name</label>
+				<input type="text" name="middle_name" id="middle_name" value="{{middle_name}}" maxlength="30"/>
+			</div>
+			<div class="field half">
+				{% if last_name_missing == "true" %}
+				<span class="alert">Enter last name.</span>
+				{% endif %}
+				<label for="last_name">Last Name</label>
+				<input type="text" name="last_name" id="last_name" value="{{last_name}}" maxlength="30"/>
+			</div>
+			<div class="field half">
+				{% if dob_missing == "true" %}
+				<span class="helptext">Enter date of birth</span>
+				{% endif %}
+				<label for="date_of_birth">Date of Birth</label>
+				<input type="text" name="date_of_birth" id="date_of_birth" value="{{date_of_birth}}" />
+				<div id="date_of_birth_div">
+				</div>
+			</div>
+			<div class="field half">
+				{% if tob_missing == "true" %}
+				<span class="helptext">Enter time of birth</span>
+				{% endif %}
+				<label for="time_of_birth">Time of Birth</label>
+				<select id="time_of_birth_hh" name="time_of_birth_hh" value="{{time_of_birth_hh}}">
+				  <option value="00">00</option>
+				  <option value="01">01</option>
+				  <option value="02">02</option>
+				  <option value="03">03</option>
+				  <option value="04">04</option>
+				  <option value="05">05</option>
+				  <option value="06">06</option>
+				  <option value="07">07</option>
+				  <option value="08">08</option>
+				  <option value="09">09</option>
+				  <option value="10">10</option>
+				  <option value="11">11</option>
+				  <option value="12">12</option>
+				</select>
+				<select id="time_of_birth_mm" name="time_of_birth_mm" value="{{time_of_birth_mm}}">
+				  <option value="--">--</option>
+				  <option value="00">00</option>
+				  <option value="01">01</option>
+				  <option value="02">02</option>
+				  <option value="03">03</option>
+				  <option value="04">04</option>
+				  <option value="05">05</option>
+				  <option value="06">06</option>
+				  <option value="07">07</option>
+				  <option value="08">08</option>
+				  <option value="09">09</option>
+				  <option value="10">10</option>
+				  <option value="11">11</option>
+				  <option value="12">12</option>
+				  <option value="13">13</option>
+				  <option value="14">14</option>
+				  <option value="15">15</option>
+				  <option value="16">16</option>
+				  <option value="17">17</option>
+				  <option value="18">18</option>
+				  <option value="19">19</option>
+				  <option value="20">20</option>
+				  <option value="21">21</option>
+				  <option value="22">22</option>
+				  <option value="23">23</option>
+				  <option value="24">24</option>
+				  <option value="25">25</option>
+				  <option value="26">26</option>
+				  <option value="27">27</option>
+				  <option value="28">28</option>
+				  <option value="29">29</option>
+				  <option value="30">30</option>
+				  <option value="31">31</option>
+				  <option value="32">32</option>
+				  <option value="33">33</option>
+				  <option value="34">34</option>
+				  <option value="35">35</option>
+				  <option value="36">36</option>
+				  <option value="37">37</option>
+				  <option value="38">38</option>
+				  <option value="39">39</option>
+				  <option value="40">40</option>
+				  <option value="41">41</option>
+				  <option value="42">42</option>
+				  <option value="43">43</option>
+				  <option value="44">44</option>
+				  <option value="45">45</option>
+				  <option value="46">46</option>
+				  <option value="47">47</option>
+				  <option value="48">48</option>
+				  <option value="49">49</option>
+				  <option value="50">50</option>
+				  <option value="51">51</option>
+				  <option value="52">52</option>
+				  <option value="53">53</option>
+				  <option value="54">54</option>
+				  <option value="55">55</option>
+				  <option value="56">56</option>
+				  <option value="57">57</option>
+				  <option value="58">58</option>
+				  <option value="59">59</option>
+				</select>
+				<select id="time_of_birth_ss" name="time_of_birth_ss" value="{{time_of_birth_ss}}">
+				  <option value="--">--</option>
+				  <option value="00">00</option>
+				  <option value="01">01</option>
+				  <option value="02">02</option>
+				  <option value="03">03</option>
+				  <option value="04">04</option>
+				  <option value="05">05</option>
+				  <option value="06">06</option>
+				  <option value="07">07</option>
+				  <option value="08">08</option>
+				  <option value="09">09</option>
+				  <option value="10">10</option>
+				  <option value="11">11</option>
+				  <option value="12">12</option>
+				  <option value="13">13</option>
+				  <option value="14">14</option>
+				  <option value="15">15</option>
+				  <option value="16">16</option>
+				  <option value="17">17</option>
+				  <option value="18">18</option>
+				  <option value="19">19</option>
+				  <option value="20">20</option>
+				  <option value="21">21</option>
+				  <option value="22">22</option>
+				  <option value="23">23</option>
+				  <option value="24">24</option>
+				  <option value="25">25</option>
+				  <option value="26">26</option>
+				  <option value="27">27</option>
+				  <option value="28">28</option>
+				  <option value="29">29</option>
+				  <option value="30">30</option>
+				  <option value="31">31</option>
+				  <option value="32">32</option>
+				  <option value="33">33</option>
+				  <option value="34">34</option>
+				  <option value="35">35</option>
+				  <option value="36">36</option>
+				  <option value="37">37</option>
+				  <option value="38">38</option>
+				  <option value="39">39</option>
+				  <option value="40">40</option>
+				  <option value="41">41</option>
+				  <option value="42">42</option>
+				  <option value="43">43</option>
+				  <option value="44">44</option>
+				  <option value="45">45</option>
+				  <option value="46">46</option>
+				  <option value="47">47</option>
+				  <option value="48">48</option>
+				  <option value="49">49</option>
+				  <option value="50">50</option>
+				  <option value="51">51</option>
+				  <option value="52">52</option>
+				  <option value="53">53</option>
+				  <option value="54">54</option>
+				  <option value="55">55</option>
+				  <option value="56">56</option>
+				  <option value="57">57</option>
+				  <option value="58">58</option>
+				  <option value="59">59</option>
+				</select>
+				<select id="ampm" name="ampm" value="{{am_pm}}">
+				  <option value="--">--</option>
+				  <option value="AM">AM</option>
+				  <option value="PM">PM</option>
+				</select>
+			</div>
+			<div class="field half">
+				{% if pob_missing == "true" %}
+				<span class="helptext">Enter place of birth</span>
+				{% endif %}
+				<label for="place_of_birth">Place of Birth</label>
+				<input type="text" name="place_of_birth" id="place_of_birth" value="{{place_of_birth}}" maxlength="80"/>
+			</div>
+			<div class="field half">
+				{% if current_location_missing == "true" %}
+				<span class="helptext">Enter Current Location</span>
+				{% endif %}
+				<label for="current_location">Current Location</label>
+				<input type="text" name="current_location" id="current_location" value="{{current_location}}" maxlength="80"/>
+			</div>
+			<div class="field half">
+				{% if email_missing == "true" %}
+				<span class="helptext">Enter Email</span>
+				{% endif %}
+				<label for="email_addr">Email</label>
+				<input type="text" name="email_addr" id="email_addr" value="{{email_addr}}" maxlength="50"/>
+			</div>
+			<div class="field">
+				{% if message_missing == "true" %}
+				<span class="helptext">Enter Message</span>
+				{% endif %}
+				<label for="message">Message</label>
+				<textarea name="message" id="message" rows="4" value="{{message}}" maxlength="500"></textarea>
+			</div>
+		</div>
+		<ul class="actions">
+			<li><input type="submit" value="Submit Personal Info" class="primary" /></li>
+			<li><input type="reset" value="Reset" /></li>
+		</ul>
+	</form>
+</article>
+{% endblock %}
+
+{% block horary_content %}
+<article id="horary">
+	<h2 class="major">Horary</h2>
+	<span class="image main">
+		<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}" alt="">
+	</span>
+	<p>	Some people do not have any of the birth details and in such a case the consultee can confidently rely on this method wherein, He will be asked to put his Question and
+		also mention a Number between 1 & 249. Based on the number the HORARY HOROSCOPE will be erected and the answer will be given... It is to be noted that the consultees will have to give separate number for each query.
+	</p>
+</article>
+{% endblock %}
+
+{% block annual_horoscopy_content %}
+<article id="annual_horoscopy">
+	<h2 class="major">Annual Horoscopy</h2>
+	<span class="image main">
+		<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}" alt="">
+	</span>
+	<p>This is the system applicable for those who already have HOROSCOPE from us ... because it is a yearly exercise and we have to draw the horoscope for a particular year and has to be judged vis-a-vis the NATAL HOROSCOPE, based on the current data of the consultee viz.. His current place of stay etc.. The Annual Horoscopy throws much more illuminated light and it has to be judged again in combination with the NATAL HOROSCOPE.</p>
+</article>
+{% endblock %}
+
+<!-- Muhurat -->
+{% block muhurat_content %}
+<article id="muhurat">
+	<h2 class="major">Muhurat</h2>
+	<span class="image main">
+		<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}" alt="">
+	</span>
+	<p>	This the system of finding and fixing AUSPICIOUS TIME for performing various important activities such as
+		First Feeding of Child,
+		Tonsuring ceremony,
+		Cradle ceremony,
+		Laying Foundation Stone,
+		Signing the Nominations,
+		Signing various imp. Papers,
+		Thread Ceremonies,
+		Fixing of Alliances,
+		Marriage,
+		Joining Jobs,
+		Entering into Contracts,
+		Purchase/Sale of Land,
+		Sowing Seeds,
+		Opening of Offices,
+		Construction of Houses,
+		House Warming,
+		Starting of Compromises,
+		Purchase of Vehicles,
+		Taking of Medicines by sick persons,
+		Hospitalisation,
+		Ear Boaring Ceremonies,
+		Starting New Ventures,
+		Digging of Borewells,
+		Etc....
+		Selectively only few are given above, among various others.
+	</p>
+</article>
+{% endblock %}
+
+<!-- Remedies -->
+{% block remedies_content %}
+<article id="remedies">
+	<h2 class="major">Remedies</h2>
+	<span class="image main">
+		<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}" alt="">
+	</span>
+	<p>
+		Generally it is seen that every person encounters some or the other problem during one’s life time starting from Health to Hispitalisation on the one hand and on the other hand some issues like settlement of debts, litigation, non- materialisation of marriages of children, continuous failures in one’s attempts be it in the Education, Jobs, fixation of Alliances for marriages, Love matters, construction of houses or house warming... etc being few given here selectively among various others.
+		At times the consultees will be advised whereupon they have to wear a particular colour code of dress to be used on certain week days where the problems can be overcome with much ease while in certain other issues they may be advised to resort to a particular remedy wherein certain types of God’s/ Mantra may have to be propitiated, viz. BAGALAMUKHI for Legal Litigation, UCHISHTA GANAPATHI for overcoming certain hurdles, DAKSHINAMOORTHY for some other issues ranging from kids Education to Heavy Disastrous Health Situations, CHANDI for Heavy Business Losses and slackness etc...
+		In this Remedial aspect.. Also advised various SHANTIS, if any, on the Birth of New Borns based on their Horoscopes.
+		In case where the consultees suffer from PUNARPHOO, they experience failures in first attempts in Visa Approvals, Jobs, interview selections, Matrimonial Matters, Business Dealings etc.. (selectively given a few among others )
+		In some cases very simple remedies which are cost-free at times, mitigate the Malefic effects and enhance the positivity. While in some others, to follow some other remedies are suggested..
+		In selective cases, GEMS are advised to be put on the fingers..
+		THIS IS ADVISED ONLY & ONLY WHEN IT BECOMES MANDATORY.</p>
+</article>
+{% endblock %}
+
+<!-- Matrimonial Horoscope Matching Content -->
+{% block matrimonial_horoscope_matching_content %}
+<article id="matrimonial_horoscope_matching">
+	<h2 class="major">Matrimonial Horoscope Matching</h2>
+	<span class="image main">
+		<img src="{% static 'samayanandaa_web/images/my_photo.jpg' %}" alt="">
+	</span>
+	<p>
+	</p>
+</article>
+{% endblock %}
+
+{% block payment_content %}
+<article id="payment">
+	<h2 class="major">Payment</h2>
+	<span class="image main">
+		<img src="{% static 'samayanandaa_web/images/pic02.jpg' %}" alt="">
+	</span>
+	<p>Please make payment below:</p>
+	<form id="payment-form" method="post" action="{% url 'payment' %}">
+		{% csrf_token %}
+		<input style="max-width:60%;" readonly type="text" name="charge_id" id="charge_id" value="{{request.session.charge_id}}"><br>
+		<input style="max-width:60%;" readonly type="hidden" name="client_id" id="client_id" value="{{request.session.client_id}}"><br>
+		<input style="max-width:60%;" readonly type="hidden" name="paid_status" id="paid_status" value="{{paid_status}}"><br>
+		<label for="receipt_email">Receipt E-mail</label>
+		<input style="max-width:60%;" type="text" name="receipt_email" id="receipt_email" value="{{receipt_email}}"><br>
+		<label for="amount">Amount</label>
+		<input style="max-width:60%;" type="text" name="amount" id="amount" value="{{amount}}"><br>
+		<div class="form-row">
+			<!-- Used to display form errors. -->
+		</div>
+		<div class="form-row">
+		    <div id="order-div">
+				<label for="card-element">
+				    Credit or debit card
+			    </label>
+			    <div id="card-element">
+			    	<!-- A Stripe Element will be inserted here. -->
+			    </div>
+			    <!-- Used to display form errors. -->
+			    <div id="card-errors" role="alert"></div>
+			    <br>
+		  		<button>Submit Payment</button>
+		  	</div>
+		</div>
+	</form>
+</article>
+{% endblock %}
+
+{% block natal_horoscope_confirm_content %}
+<article id="natal_horoscope_confirm">
+	<h2 class="major">Natal Horoscope Payment</h2>
+	<span class="image main">
+		<img src="{% static 'samayanandaa_web/images/pic02.jpg' %}" alt="">
+	</span>
+	<form id="natal_horoscope_confirm_form" method="post" action="">
+		{% csrf_token %}
+		<p>
+			Your information was sent to Guruji and he will review and revert back with you via email to the address provided:
+			<br>
+			{{request.session.receipt_email}}
+			<br>
+			Your payment id is: {{request.session.charge_id}}
+		</p>
+	</form>
+</article>
+{% endblock %}
+
+{% block contact_us_content %}
+<article id="contact_us">
+	<h2 class="major">Contact Us</h2>
+	<form method="post" action="{% url 'contact_us' %}#contact_us">
+		{% csrf_token %}
+		<div class="fields">
+			<div class="field half">
+				<label for="name">Name</label>
+				<input type="text" name="name" id="name" />
+			</div>
+			<div class="field half">
+				<label for="email">Email</label>
+				<input type="text" name="email" id="email" />
+			</div>
+			<div class="field">
+				<label for="message">Message</label>
+				<textarea name="message" id="message" rows="4"></textarea>
+			</div>
+		</div>
+		<ul class="actions">
+			<li><input type="submit" value="Send Message" class="primary" /></li>
+			<li><input type="reset" value="Reset" /></li>
+		</ul>
+	</form>
+</article>
+{% endblock %}
+
+{% block feedback_content %}
+<article id="feedback">
+	<h2 class="major">Testimonials</h2>
+	<form method="post" action="{% url 'feedback' %}#feedback">
+		{% csrf_token %}
+		{% if testimonials %}
+			<table>	
+				{% for t in testimonials %}
+				<tr>
+					<th>Name:</th>
+					<td>{{t.last_name}} {{t.first_name}}</td>
+					<th>Email:</th>
+					<td>{{t.email_addr}}</td>
+					<th>Feedback Rating:</th>
+					<td>*****</td>
+				</tr>
+				<tr>
+					<th colspan="3">Feedback Message</th>
+					<td colspan="3">{{t.feedback_message_content}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		{% endif %}
+		Please provide your valuable feedback.
+		<div class="fields">
+			<div class="field half">
+				<label for="first_name">First Name</label>
+				<input type="text" name="first_name" id="first_name" />
+			</div>
+			<div class="field half">
+				<label for="last_name">Last Name</label>
+				<input type="text" name="last_name" id="last_name" />
+			</div>
+			<div class="field half">
+				<label for="email_addr">Email</label>
+				<input type="text" name="email_addr" id="email_addr" />
+			</div>
+			<div class="field">
+				<label for="feedback_message_content">Feedback</label>
+				<textarea name="feedback_message_content" id="feedback_message_content" rows="7"></textarea>
+			</div>
+		</div>
+		<ul class="actions">
+			<li><input type="submit" value="Submit Feedback" class="primary" /></li>
+			<li><input type="reset" value="Reset" /></li>
+		</ul>
+	</form>
+</article>
+{% endblock %}

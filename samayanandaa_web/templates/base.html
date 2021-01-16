@@ -1,0 +1,411 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SAMAYANANDAA</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--css-->
+		<script src="https://js.stripe.com/v3/"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'samayanandaa_web/assets/css/main.css' %}">
+		<link rel="stylesheet" href="{% static 'samayanandaa_web/assets/css/stripe.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'samayanandaa_web/assets/css/jquery-ui.min.css' %}">
+		<noscript><link rel="stylesheet" href="{% static 'samayanandaa_web/assets/css/noscript.css' %}" /></noscript>
+    <style>
+		html, body {
+		  margin: 0;
+		  padding: 0;
+		  font-family: Helvetica, Arial, sans-serif;
+		}
+		img {
+    		max-width: 100%;
+    		max-height: 100%;
+		}
+		* { box-sizing: border-box; }
+		.container {
+		  width: 100%;
+		  height: 450px;
+		  overflow: hidden;
+		  position: absolute;
+		}
+		.timer {
+		  height: 1%;
+		  width: 0%;
+		  position: absolute;
+		  left: 0;
+		  bottom: 0;
+		  z-index: 10;
+		}
+		.slideshow {
+		  position: relative;
+		  height: 100%;
+		}
+		.slide {
+		  width: 100%;
+		  height: 100%;
+		  text-align: center;
+		  line-height: 320px;
+		  font-size: 640px;
+		  }
+
+		.slide { display: none;}
+	    #date_of_birth_div {
+    	    display: none;
+    	}
+		.ui-datepicker {
+			width: 19em; 
+		}    	
+    </style>
+	</head>
+	<body class="is-preload">		
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<div class="container">
+					  		<div class="timer"></div>
+					  		<div class="slideshow">
+							    <div class="slide">
+							        <img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_01.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+									<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_02.jpg' %}" alt="">	
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_03.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_04.jpg' %}" alt="">
+							    </div> 
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_05.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_07.jpg' %}" alt="">
+							    </div>  							     	
+								<div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_08.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_09.jpg' %}" alt="">
+							    </div>  							     								    
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_10.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_11.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_12.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_13.jpg' %}" alt="">
+							    </div>  							     								    
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_14.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_15.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_16.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_17.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							        <img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_01.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+									<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_18.jpg' %}" alt="">		
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_19.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_20.jpg' %}" alt="">
+							    </div> 
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_21.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_22.jpg' %}" alt="">
+							    </div>  							     	
+								<div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_23.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_24.jpg' %}" alt="">
+							    </div>  							     								    
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_25.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_26.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_27.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_28.jpg' %}" alt="">
+							    </div>  							     								    
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_29.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_30.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_31.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_32.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_33.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_34.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_35.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_36.jpg' %}" alt="">
+							    </div>  							     								    
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_37.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_38.jpg' %}" alt="">
+							    </div>  							     	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_39.jpg' %}" alt="">
+							    </div>
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_40.jpg' %}" alt="">
+							    </div>	
+							    <div class="slide">
+							    	<img class="fit" src="{% static 'samayanandaa_web/images/Ganesha_41.jpg' %}" alt="">
+							    </div>							    						    
+							</div>						
+						</div>							
+						<div class="content">
+							<div class="inner">
+								<h1>Samayanandaa</h1>
+								<p>-- Service to Mankind --</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="{% url 'home' %}#about_us">About Us</a></li>
+								<li><a href="{% url 'home' %}#natal_horoscope">Natal Horoscope</a></li>
+								<li><a href="{% url 'home' %}#horary">Horary</a></li>
+								<li><a href="{% url 'home' %}#annual_horoscopy">Annual Horoscopy</a></li>
+								<li><a href="{% url 'home' %}#muhurat">Muhurat</a></li>
+								<li><a href="{% url 'home' %}#remedies">Remedies</a></li>
+								<li><a href="{% url 'home' %}#matrimonial_horoscope_matching">Matrimonial Horoscope Matching</a></li>
+								<li><a href="{% url 'home' %}#contact_us">Contact Us</a></li>
+								<li><a href="{% url 'home' %}#feedback">Feedback</a></li>
+							</ul>
+						</nav>						
+					</header>	
+				<!--<img src="{% static 'samayanandaa_web/images/screenshot-2.png' %}" alt="">-->
+				<!-- Main -->
+					<div id="main">
+						<!-- About Us -->
+							{% block about_us_content %}
+					        {% endblock %}
+
+						<!-- Natal Horoscope -->
+					        {% block natal_horoscope_content %}
+					        {% endblock %}
+
+						<!-- Payment -->
+					        {% block payment_content %}
+					        {% endblock %}
+
+						<!-- Natal Horoscope Confirm -->
+					        {% block natal_horoscope_confirm_content %}
+					        {% endblock %}
+
+						<!-- Horary -->
+					        {% block horary_content %}
+					        {% endblock %}
+
+						<!-- Annual Horoscopy -->
+							{% block annual_horoscopy_content %}
+					        {% endblock %}
+							
+						<!-- Muhurat -->
+							{% block muhurat_content %}
+					        {% endblock %}
+
+						<!-- Remedies -->
+							{% block remedies_content %}
+					        {% endblock %}
+
+						<!-- Matrimonial Horoscope Matching -->
+							{% block matrimonial_horoscope_matching_content %}
+					        {% endblock %}
+
+						<!-- Contact -->
+							{% block contact_us_content %}
+					        {% endblock %}						
+							<article id="contact_us">
+								<h2 class="major">Contact Us</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="4"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</form>
+							</article>
+						<!-- Feedback -->
+							{% block feedback_content %}
+					        {% endblock %}
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy;Samayanandaa</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			{% load staticfiles %}
+			<script src="{% static 'samayanandaa_web/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'samayanandaa_web/assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'samayanandaa_web/assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'samayanandaa_web/assets/js/util.js' %}"></script>
+			<script src="{% static 'samayanandaa_web/assets/js/main.js' %}"></script>
+			<script src="{% static 'samayanandaa_web/assets/js/stripe.js' %}"></script>
+			<script src="{% static 'samayanandaa_web/assets/js/jquery-ui.min.js' %}"></script>
+			<script>
+			/* Slider (work in progress)
+			 * 03/09/2015 by Andrew Errico
+			 */
+			$(function() {
+
+			    // slider type
+			    $t = "fade"; // opitions are fade and slide
+			    
+			  	//variables
+			    $f = 1000,  // fade in/out speed
+			    $s = 1000,  // slide transition speed (for sliding carousel)
+			    $d = 3900;  // duration per slide
+			    
+			    $n = $('.slide').length; //number of slides
+			    $w = $('.slide').width(); // slide width
+			  	$c = $('.container').width(); // container width
+			   	$ss = $n * $w; // slideshow width
+			  
+			  	
+			      function timer() {
+			        $('.timer').animate({"width":$w}, $d);
+			        $('.timer').animate({"width":0}, 0);
+			    }
+
+			  
+			  // fading function
+			    function fadeInOut() {
+			      timer();
+			        $i = 0;    
+			        var setCSS = {
+			            'position' : 'absolute',
+			            'top' : '0',
+			            'left' : '0'
+			        }        
+			        
+			        $('.slide').css(setCSS);
+			        
+			        //show first item
+			        $('.slide').eq($i).show();
+			        
+
+			        setInterval(function() {
+			          timer();
+			            $('.slide').eq($i).fadeOut($f);
+			            if ($i == $n - 1) {
+			                $i = 0;
+			            } else {
+			                $i++;
+			            }
+			            $('.slide').eq($i).fadeIn($f, function() {
+			                $('.timer').css({'width' : '0'});
+			            });
+
+			        }, $d);
+			        
+			    }
+			    
+			    function slide() {
+			      timer();
+			        var setSlideCSS = {
+			            'float' : 'left',
+			            'display' : 'inline-block',
+			          	'width' : $c
+			        }
+			        var setSlideShowCSS = {
+			            'width' : $ss // set width of slideshow container
+			        }
+			        $('.slide').css(setSlideCSS);
+			        $('.slideshow').css(setSlideShowCSS); 
+			        
+			        
+			        setInterval(function() {
+			            timer();
+			            $('.slideshow').animate({"left": -$w}, $s, function(){
+			                // to create infinite loop
+			                $('.slideshow').css('left',0).append( $('.slide:first'));
+			            });
+			        }, $d);
+			        
+			    }
+			    
+			    if ($t == "fade") {
+			        fadeInOut();
+			        
+			    } if ($t == "slide") {
+			        slide();
+			        
+			    } else {
+			      
+			    }
+			});
+			$( function() {
+			    $( "#date_of_birth_div" ).datepicker({
+			        changeMonth: true,
+			        changeYear: true,
+			        yearRange: "1919:2019",
+			        onSelect: function(dateText, inst){
+			        	var date = $(this).val();
+			        	$("#date_of_birth").val(date);
+			        	$("#date_of_birth_div").hide();
+			        }			        
+			    });
+			});
+		    $("#date_of_birth").focusin(function() { 
+            	$("#date_of_birth_div").show();
+        	});         			
+			</script>
+	</body>
+</html>
