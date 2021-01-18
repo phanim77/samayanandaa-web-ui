@@ -25,7 +25,7 @@ SECRET_KEY = 'c&w76eqjvy!@+qd)swy!o^f)mwo#2-i=b+x=la-p^38p*@f*%v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'samayanandaa-web-env.gefp8psczg.us-east-2.elasticbeanstalk.com', 'www.samayanandaa.org']
+ALLOWED_HOSTS = ['localhost', 'samayanandaa-web-env.gefp8psczg.us-east-2.elasticbeanstalk.com', 'samayanandaa-web.azurewebsites.net', 'www.samayanandaa.org']
 
 
 # Application definition
